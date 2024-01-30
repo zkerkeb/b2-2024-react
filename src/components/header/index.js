@@ -1,16 +1,17 @@
 
 
-const Header = ({label}) => {
+const Header = ({cocoChannel, label, nombre, cuicui = "cuicui l'oiseau"}) => { 
+    console.log("🚀 ~ Header ~ cuicui:", cuicui)
     return (
         <header>
-            <span>{label}</span>
+            <span onClick={cocoChannel} >{label} {nombre}</span>
         </header>
     )
 }
 
 
-Header.defaultProps = {
-    label: "Hello World"
-}
+// Header.defaultProps = {
+//     label: "Hello World"
+// }
 
 export default Header;

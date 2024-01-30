@@ -1,7 +1,6 @@
-import axios from 'axios'
 import { useEffect, useState } from "react"
 
-const PokeForm = () => {
+const PokeForm = ({selectedPokemon, handleSubmit}) => {
     const [formPoke, setFormPoke] = useState({
         name: '',
         type: '',
@@ -12,6 +11,21 @@ const PokeForm = () => {
         speed: '',
         character: ''
     })
+
+    useEffect(() => {
+        setFormPoke({
+            id: selectedPokemon.id,
+            name: selectedPokemon.name,
+            type: selectedPokemon.type,
+            description: selectedPokemon.description,
+            hp: selectedPokemon.hp,
+            attack: selectedPokemon.attack,
+            defense: selectedPokemon.defense,
+            speed: selectedPokemon.speed,
+            character: selectedPokemon.character
+        })
+
+    }, [selectedPokemon])
 
     const handleChanges = (e) => {
         setFormPoke({
@@ -25,30 +39,15 @@ const PokeForm = () => {
     }, [formPoke])
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log('submit')
-        console.log(formPoke)
-        axios({
-            method: 'POST',
-            url: 'http://localhost:3001/cards',
-            data: formPoke
-        }).then((response) => {
-            console.log(response.data)
-        }
-        ).catch((error) => {
-            console.error(error)
-            alert('Une erreur est survenue lors de la création de la carte')
-        })
-    }
-
+  
 
     return (
         <div>
             <h1>PokeForm</h1>
 
             <form
-            onSubmit={handleSubmit}
+            // onSubmit={handleSubmit} // que le envoye el formulario
+            onSubmit={(e) => handleSubmit(e, formPoke)}
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
