@@ -1,16 +1,20 @@
 
 import { useEffect } from "react";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const ProtectedRoutes = ({
     component: Component,
     ...rest
 }) => {
+    const navigate = useNavigate()  
+
     useEffect(() => {
+
+        console.log('ProtectedRoutes')
     const token = localStorage.getItem('token')
     if (!token) {
-        redirect('/')
+        navigate('/')
     }
     },[])
     return (

@@ -1,6 +1,7 @@
 import './App.css';
 // import Counter from './components/counter';
 import { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from 'styled-components';
 import Routes from './config/routes';
 import { themeDark, themeLight } from './config/theme';
@@ -57,6 +58,7 @@ function App() {
           }
         }}
       >Switch Theme</button>
+      <Toaster></Toaster>
       <Routes/>
     </ThemeProvider>
   );

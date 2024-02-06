@@ -14,7 +14,7 @@ import Login from "../screens/login";
     },
     {
         path: "/characters",
-        element: <ProtectedRoutes component={Characters} />,
+        element: <ProtectedRoutes component={Characters}  />,
     },
     {
         path: "/characters/:id",
