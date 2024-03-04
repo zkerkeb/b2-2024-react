@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
 
 const LoginForm = () => {
     const [inputs, setInputs] = useState({
@@ -29,7 +30,7 @@ const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} >
+        <FormStyled onSubmit={handleSubmit} >
             <input
                 type="email"
                 placeholder="Email"
@@ -43,9 +44,17 @@ const LoginForm = () => {
                 onChange={(e) => setInputs({...inputs, password: e.target.value})}
             />
             <button type="submit">Login</button>
-        </form>
+        </FormStyled>
         
     );
 }
+
+const FormStyled = styled.form`
+    padding:12px;
+    background-color: #222222;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+`
 
 export default LoginForm;

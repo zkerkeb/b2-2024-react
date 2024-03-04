@@ -2,9 +2,16 @@ import './App.css';
 // import Counter from './components/counter';
 import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Routes from './config/routes';
 import { themeDark, themeLight } from './config/theme';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 200px;
+    padding: 0;
+  }
+`
 
 function App() {
   const [theme, setTheme] = useState('light')
@@ -49,7 +56,7 @@ function App() {
 
   return (
     <ThemeProvider theme={ theme === 'light' ? themeLight : themeDark}>
-      <button
+      {/* <button
         onClick={() => {
           if (theme === 'light') {
             setTheme('dark')
@@ -57,9 +64,11 @@ function App() {
             setTheme('light')
           }
         }}
-      >Switch Theme</button>
+      >Switch Theme</button> */}
+
       <Toaster></Toaster>
       <Routes/>
+      <GlobalStyle></GlobalStyle>
     </ThemeProvider>
   );
 }

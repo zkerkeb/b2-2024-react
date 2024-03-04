@@ -29,6 +29,7 @@ const Player = () => {
     const audioRef = useRef();
 
     useEffect(() => {
+        if (!audioRef?.current) return;
         audioRef.current.addEventListener('timeupdate', () => {
             setProgress((audioRef.current.currentTime / audioRef.current.duration) * 100);
         });
@@ -72,7 +73,7 @@ const Player = () => {
                         
                         }}
                     >
-                        {fancyTimeFormat(audioRef.current.currentTime)}
+                        {fancyTimeFormat(audioRef.current?.currentTime)}
                     </span>
                         <ProgressBarContainer>
                             <ProgressBar progress={progress} ></ProgressBar>
@@ -83,7 +84,7 @@ const Player = () => {
                             fontSize: 10
                         
                         }}
-                    >{fancyTimeFormat(audioRef.current.duration)}</span>
+                    >{fancyTimeFormat(audioRef.current?.duration)}</span>
 
                 </BottomContainer>
             

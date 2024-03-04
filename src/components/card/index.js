@@ -1,5 +1,5 @@
 import randomColor from 'randomcolor';
-import styled from 'styled-components';
+import { CardContainer } from './styled';
 
 const Card = ({card}) => {
     console.log("🚀 ~ Card ~ card:", card)
@@ -21,18 +21,6 @@ const Card = ({card}) => {
     );
 }
 
-const CardContainer = styled.div`
-    background-color: ${(props) => props.backgroundColor};
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    height: 300px;
-    border-radius: 10px;
-    border: 1px solid black;
-    justify-content: center;
-    align-items: center;
-
-`
 
 
 export default Card;
